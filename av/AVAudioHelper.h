@@ -13,7 +13,6 @@
 }
 
 + (AVAudioHelper*)sharedInstance;
-+ (void)disposeSharedInstance;
 
 - (void)playSimpleSoundWithFilePath:(NSString*)path;
 

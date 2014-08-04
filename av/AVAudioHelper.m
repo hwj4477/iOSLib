@@ -15,18 +15,8 @@ static AVAudioHelper *_instnace = nil;
     @synchronized([AVAudioHelper class])
 	{
 		if( !_instnace )
-			[[self alloc]init];
+			_instnace = [[AVAudioHelper alloc] init];
         
-		return _instnace;
-	}
-	return nil;
-}
-
-+ (id)alloc
-{
-	@synchronized([AVAudioHelper class])
-	{
-		_instnace = [super alloc];
 		return _instnace;
 	}
 	return nil;
@@ -37,21 +27,9 @@ static AVAudioHelper *_instnace = nil;
 	self = [super init];
 	if( self != nil)
 	{
-
+        
 	}
 	return self;
-}
-
-+ (void)disposeSharedInstance
-{
-	@synchronized(self)
-	{
-        if(_instnace != nil)
-        {
-            [_instnace release];
-            _instnace = nil;
-        }
-	}
 }
 
 #pragma mark - player control
@@ -78,7 +56,6 @@ static AVAudioHelper *_instnace = nil;
     if(audioPlayer)
     {
         [audioPlayer stop];
-        [audioPlayer release];
         audioPlayer = nil;
     }
 }
@@ -89,7 +66,6 @@ static AVAudioHelper *_instnace = nil;
     if(flag && player)
     {
         [player stop];
-        [player release];
         player = nil;
     }
     

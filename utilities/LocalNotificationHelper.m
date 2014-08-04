@@ -28,7 +28,7 @@
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     
     //Custom Data
-    NSMutableDictionary *infoDict = [[[NSMutableDictionary alloc] init] autorelease];
+    NSMutableDictionary *infoDict = [[NSMutableDictionary alloc] init];
     [infoDict setObject:[NSNumber numberWithInt:notifId] forKey:@"notif_id"];
     
     NSEnumerator *keyEnum = [data keyEnumerator];
@@ -45,8 +45,6 @@
     
     //Local Notification 등록
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-    
-    [localNotif release];
 }
 
 + (BOOL)cancelLocalNotificationWithType:(int)type

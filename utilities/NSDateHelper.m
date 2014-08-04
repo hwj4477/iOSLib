@@ -15,8 +15,6 @@
     
     NSString *strResult = [dateFommatter stringFromDate:[NSDate date]];
     
-    [dateFommatter release];
-    
     return strResult;
 }
 

@@ -226,14 +226,4 @@
 	return nil;
 }
 
-#pragma mark -
-#pragma mark etc.
-
-- (void)dealloc
-{
-	sqlite3_close(database);
-	
-	[super dealloc];
-}
-
 @end
