@@ -1,0 +1,21 @@
+# git ignore file
+# last update : 13.07.11
+
+# xcode files
+build/*
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
+
+# scm files
+.svn
+.cvs
+
+# OSX files/dirs
+.DS_Store
+.Trash
+.CFUserTextEncoding
+.crash_*
