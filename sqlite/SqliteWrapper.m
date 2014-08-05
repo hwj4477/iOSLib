@@ -55,7 +55,7 @@
 #pragma mark -
 #pragma mark select
 
-- (NSArray*)executeQueryString:(NSString*)query WithParameters:(NSArray*)parameters
+- (NSArray*)selectQueryString:(NSString*)query WithParameters:(NSArray*)parameters
 {
 	NSMutableArray *resultArray = [NSMutableArray array];
 	sqlite3_stmt *statement;

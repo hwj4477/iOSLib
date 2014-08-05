@@ -18,6 +18,6 @@
 
 - (bool)executeQueryString:(NSString*)query;
 
-- (NSArray*)executeQueryString:(NSString*)query WithParameters:(NSArray*)parameters;
+- (NSArray*)selectQueryString:(NSString*)query WithParameters:(NSArray*)parameters;
 
 @end
