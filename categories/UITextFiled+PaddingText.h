@@ -4,6 +4,7 @@
 //  Created by hwj4477 on 2014. 7. 14..
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 @interface UITextField (UITextFiledPadding)

@@ -4,6 +4,8 @@
 //  Created by hwj4477 on 12. 6. 18..
 //
 
+#import "UIViewController+Universal.h"
+
 @implementation UIViewController (UIViewControllerUniversal)
 
 #define FOURINCH_RETINA_FILE_SUFFIX @"-568h"

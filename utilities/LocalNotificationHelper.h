@@ -4,6 +4,7 @@
 //  Created by hwj4477 on 13. 5. 13..
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 @interface LocalNotificationHelper : NSObject
