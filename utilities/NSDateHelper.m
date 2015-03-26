@@ -28,7 +28,7 @@
 	NSDateComponents *components = [gregorian components:unitFlags
 												fromDate:startDate
 												  toDate:endDate options:0];
-	int days = [components day];
+	int days = (int)[components day];
 	return days;
 }
 
