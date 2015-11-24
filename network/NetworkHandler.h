@@ -6,13 +6,8 @@
 //      - SSZipArchive  : https://github.com/soffes/ssziparchive
 //      - MBProgressHUD : https://github.com/jdg/MBProgressHUD
 //
-//  usage (cocoapods)
-//      pod "AFNetworking", "~> 2.0"
-//      pod 'AFDownloadRequestOperation', '~> 2.0.1'
-//      pod 'SSZipArchive', '~> 0.3.2'
-//      pod 'MBProgressHUD', '~> 0.9.1'
-//
-//  Created by hwj4477 on 2015. 4. 28..
+//  Created by wjhong on 2015. 4. 28..
+//  Copyright (c) 2015년 st&company. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -43,6 +38,16 @@ typedef void (^unzipCompleteBlock)(BOOL complete);
            parameters:(NSDictionary*)param
               success:(void (^)(NSDictionary *jsonResult))success
               failure:(void (^)(NSString *strError))failure;
+
+- (void)requestPutURL:(NSString*)url
+           parameters:(NSDictionary*)param
+              success:(void (^)(NSDictionary *jsonResult))success
+              failure:(void (^)(NSString *strError))failure;
+
+- (void)requestDeleteURL:(NSString*)url
+              parameters:(NSDictionary*)param
+                 success:(void (^)(NSDictionary *jsonResult))success
+                 failure:(void (^)(NSString *strError))failure;
 
 - (void)setHeaderValue:(NSString*)value Filed:(NSString*)filed;
 

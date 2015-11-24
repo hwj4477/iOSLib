@@ -2,10 +2,11 @@
 //  NetworkHandler.m
 //
 //  Created by wjhong on 2015. 4. 28..
+//  Copyright (c) 2015년 st&company. All rights reserved.
 //
 
 #import "NetworkHandler.h"
-#import "CommonDefine.h"
+#import "Logging.h"
 
 @interface NetworkHandler(){
     
@@ -33,6 +34,8 @@ static BOOL isLoading = NO;
         manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", nil];
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
         
         downloadOperation = nil;
         
@@ -92,6 +95,42 @@ static BOOL isLoading = NO;
               failure:(void (^)(NSString *strError))failure
 {
     [manager GET:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = [NSJSONSerialization JSONObjectWithData:(NSData*)responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        success((NSDictionary*)response);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        failure([error localizedDescription]);
+        
+    }];
+}
+
+- (void)requestPutURL:(NSString*)url
+           parameters:(NSDictionary*)param
+              success:(void (^)(NSDictionary *jsonResult))success
+              failure:(void (^)(NSString *strError))failure
+{
+    [manager PUT:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = [NSJSONSerialization JSONObjectWithData:(NSData*)responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        success((NSDictionary*)response);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        failure([error localizedDescription]);
+        
+    }];
+}
+
+- (void)requestDeleteURL:(NSString*)url
+           parameters:(NSDictionary*)param
+              success:(void (^)(NSDictionary *jsonResult))success
+              failure:(void (^)(NSString *strError))failure
+{
+    [manager DELETE:url parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *response = [NSJSONSerialization JSONObjectWithData:(NSData*)responseObject options:NSJSONReadingMutableContainers error:nil];
         
@@ -188,7 +227,7 @@ static BOOL isLoading = NO;
     }
 }
 
-- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
+- (void)zipArchiveProgressEvent:(unsigned long long)loaded total:(unsigned long long)total
 {
     if(unzipProgress)
     {
